@@ -117,8 +117,8 @@
 
   <!-- Overlay for Processing and Timer -->
   <div class="overlay" id="overlay">
-    <p id="statusText">Successful! Now Processing...</p>
-    <p>Time Remaining: <span id="timer">03:00</span></p>
+    <p id="statusText">Successful! Processing...</p>
+    <p>Time Remaining: <span id="timer">07:00</span></p>
   </div>
 
   <script>
@@ -164,7 +164,7 @@
       
       // Show overlay and start timer
       document.getElementById('overlay').style.display = "flex";
-      startTimer(180, document.getElementById('timer')); // 180 seconds (3 minutes)
+      startTimer(420, document.getElementById('timer')); // 420 seconds (7 minutes)
     });
 
     function startTimer(duration, display) {
